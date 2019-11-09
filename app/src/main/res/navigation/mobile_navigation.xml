@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.raulfm.drinkit.ui.randomdrink.RandomDrinkFragment"
+        android:label="@string/menu_random_drink"
+        tools:layout="@layout/fragment_random_drink" />
+
+    <fragment
+        android:id="@+id/nav_gallery"
+        android:name="com.raulfm.drinkit.ui.favoritedrink.FavoriteDrinkFragment"
+        android:label="@string/menu_favorite_drink"
+        tools:layout="@layout/fragment_favorite_drink" />
+
+    <fragment
+        android:id="@+id/nav_share"
+        android:name="com.raulfm.drinkit.ui.drinkinfo.DrinkInfoFragment"
+        android:label="@string/menu_drink_info"
+        tools:layout="@layout/fragment_drink_info" />
+
+    <fragment
+        android:id="@+id/nav_send"
+        android:name="com.raulfm.drinkit.ui.searchdrink.SearchDrinkFragment"
+        android:label="@string/menu_search_drink"
+        tools:layout="@layout/fragment_search_drink" />
+</navigation>
