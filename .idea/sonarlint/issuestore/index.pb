@@ -38,3 +38,15 @@ x
 Happ/src/main/java/com/raulfm/drinkit/ui/drinkinfo/DrinkInfoFragment.java,e\6\e668e3c64457c5e7f8dd3be12d245566492bccd6
 |
 Lapp/src/main/java/com/raulfm/drinkit/ui/randomdrink/RandomDrinkFragment.java,3\7\37f03fb19012588debf0d0f847ad720e20a33a7f
+e
+5app/src/main/java/com/raulfm/drinkit/model/Drink.java,0\d\0daac20b98acdefe912d729d3936e487a45101c3
+f
+6app/src/main/java/com/raulfm/drinkit/model/Drinks.java,c\7\c72b2e6a81f060a0789967380a529631031d4423
+r
+Bapp/src/main/java/com/raulfm/drinkit/api_request/ApiConstants.java,6\0\60165a559486e5dc0cddb5c526f6ae6f149aaf97
+q
+Aapp/src/main/java/com/raulfm/drinkit/api_request/RetrofitAPI.java,b\8\b8f29191ff27ef98f517d35653eebb8bcc3e33ff
+x
+Happ/src/main/java/com/raulfm/drinkit/api_request/RetrofitController.java,d\d\ddece9e79dd4e3a467d7539c6bc7476430b0e992
+k
+;app/src/main/java/com/raulfm/drinkit/screens/DrinkInfo.java,b\e\bee1e1602a1fe8224d8271a2d34cec03f0e563ea

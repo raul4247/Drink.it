@@ -11,4 +11,9 @@
     <string name="menu_favorite_drink">Favorite Drinks</string>
     <string name="menu_drink_info">Drink Info</string>
     <string name="menu_search_drink">Search Drink</string>
+    <string name="drink_image_description">Drink image</string>
+    <string name="ingredientes_label">Ingredients:</string>
+    <string name="receita_label">Recipe:</string>
+    <string name="copo_label">Glass Type:</string>
+    <string name="categoria_label">Category:</string>
 </resources>
