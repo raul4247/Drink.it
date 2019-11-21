@@ -1,8 +1,0 @@
-
-isquid:S2147Ì"ECombine this catch with the one at line 586, which has the same body.(µØ¯®øÿÿÿÿ8‹ïµ¢æ-
-Ysquid:S1854Æ"5Remove this useless assignment to local variable "f".(ÃÜšèÿÿÿÿÿ8·¯Í¢æ-
-Gsquid:S1148Ë"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8‹ïµ¢æ-
-bsquid:S00107é"BConstructor has 53 parameters, which is greater than 7 authorized.(ÇþÎª8ýÓ¡¢æ-
-Jsquid:S1481Æ"&Remove this unused "f" local variable.(ÃÜšèÿÿÿÿÿ8·¯Í¢æ-
-Gsquid:S1148Í"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8‹ïµ¢æ-
-]squid:UselessImportCheck"-Remove this unused import 'android.util.Log'.(Ô¦Ø²øÿÿÿÿ8”ú²¢æ-

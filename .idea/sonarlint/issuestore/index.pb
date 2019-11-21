@@ -34,8 +34,6 @@ X
 local.properties,0\7\0712df971a99ac4d2fccb8e0fb19f377f3374cca
 A
 gradle.properties,2\a\2afbb999f001938c88fa43fc2ef52abf0f8213e4
-x
-Happ/src/main/java/com/raulfm/drinkit/ui/drinkinfo/DrinkInfoFragment.java,e\6\e668e3c64457c5e7f8dd3be12d245566492bccd6
 |
 Lapp/src/main/java/com/raulfm/drinkit/ui/randomdrink/RandomDrinkFragment.java,3\7\37f03fb19012588debf0d0f847ad720e20a33a7f
 e
@@ -48,5 +46,9 @@ q
 Aapp/src/main/java/com/raulfm/drinkit/api_request/RetrofitAPI.java,b\8\b8f29191ff27ef98f517d35653eebb8bcc3e33ff
 x
 Happ/src/main/java/com/raulfm/drinkit/api_request/RetrofitController.java,d\d\ddece9e79dd4e3a467d7539c6bc7476430b0e992
-k
-;app/src/main/java/com/raulfm/drinkit/screens/DrinkInfo.java,b\e\bee1e1602a1fe8224d8271a2d34cec03f0e563ea
+Å
+Qapp/src/main/java/com/raulfm/drinkit/screens/drink_info/CircleTransformImage.java,3\3\3338c6a64aec3305c28399b7a8fa166d6d0bf03c
+q
+Aapp/src/main/java/com/raulfm/drinkit/constants/ColorConstant.java,9\3\930b4e71dca1206c0bcf4718383ec096717911b2
+~
+Napp/src/main/java/com/raulfm/drinkit/screens/drink_info/DrinkInfoActivity.java,a\2\a2a2ee8475abd8584f71fee04110a0ceb1c09f9e

@@ -25,4 +25,8 @@ public class Drinks {
     public Drink primeiroDrink() {
         return drinks.get(0);
     }
+
+    public int getSize() {
+        return drinks.size();
+    }
 }

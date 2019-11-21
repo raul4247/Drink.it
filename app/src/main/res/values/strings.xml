@@ -16,4 +16,6 @@
     <string name="receita_label">Recipe:</string>
     <string name="copo_label">Glass Type:</string>
     <string name="categoria_label">Category:</string>
+    <string name="recipe_button">Recipe</string>
+    <string name="drink_recommendation">Here are 5 drinks for you:</string>
 </resources>

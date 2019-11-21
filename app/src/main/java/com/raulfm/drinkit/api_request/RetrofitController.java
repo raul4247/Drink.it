@@ -10,4 +10,6 @@ public interface RetrofitController {
     @GET("lookup.php")
     Call<Drinks> getDrinkById(@Query("i") long id);
 
+    @GET("random.php")
+    Call<Drinks> getRandomDrink();
 }

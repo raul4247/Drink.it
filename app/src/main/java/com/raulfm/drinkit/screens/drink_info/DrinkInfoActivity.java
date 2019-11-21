@@ -3,6 +3,7 @@ package com.raulfm.drinkit.screens.drink_info;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -29,6 +30,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DrinkInfoActivity extends AppCompatActivity {
+    private Long drinkId;
     private Drink drink;
     private boolean favoritoState;
     private FloatingActionButton fabFavorito;
@@ -50,9 +52,10 @@ public class DrinkInfoActivity extends AppCompatActivity {
 
     public void carregaDrink() {
         RetrofitAPI retrofit = new RetrofitAPI();
-        Call<Drinks> call = retrofit.retrofitController.getDrinkById((long) 11415);
+        Call<Drinks> call = retrofit.retrofitController.getDrinkById(drinkId);
 
         call.enqueue(new Callback<Drinks>() {
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onResponse(Call<Drinks> call, Response<Drinks> response) {
                 if (!response.isSuccessful())
@@ -130,6 +133,8 @@ public class DrinkInfoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drink_info);
+        Intent intent = getIntent();
+        drinkId = Long.parseLong(intent.getStringExtra("drinkId"));
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
             setStatusBarColor();
