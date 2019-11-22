@@ -12,4 +12,8 @@ public interface RetrofitController {
 
     @GET("random.php")
     Call<Drinks> getRandomDrink();
+
+    @GET("search.php")
+    Call<Drinks> getDrinkByName(@Query("s") String name);
+
 }

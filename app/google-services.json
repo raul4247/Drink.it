@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "307233179881",
+    "firebase_url": "https://drinkit-1574430802096.firebaseio.com",
+    "project_id": "drinkit-1574430802096",
+    "storage_bucket": "drinkit-1574430802096.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:307233179881:android:95500495c0dfc96d990878",
+        "android_client_info": {
+          "package_name": "com.raulfm.drinkit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "307233179881-3a75oc1qpcasmopfs0d95acs8q3cg8qe.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.raulfm.drinkit",
+            "certificate_hash": "635e8850220d8fda7780022b98e8ca5f67784f5a"
+          }
+        },
+        {
+          "client_id": "307233179881-j220v2ni0aijdc7a57u34givpt8jnnhq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYWFIGX1MsSG1jeXkcmEcqD0FXQfYYLsw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "307233179881-2ruf9jeajcvnitobo0ho1c14r97g7aa2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

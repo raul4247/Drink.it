@@ -52,3 +52,5 @@ q
 Aapp/src/main/java/com/raulfm/drinkit/constants/ColorConstant.java,9\3\930b4e71dca1206c0bcf4718383ec096717911b2
 ~
 Napp/src/main/java/com/raulfm/drinkit/screens/drink_info/DrinkInfoActivity.java,a\2\a2a2ee8475abd8584f71fee04110a0ceb1c09f9e
+v
+Fapp/src/main/java/com/raulfm/drinkit/adapters/RecyclerViewAdapter.java,1\4\149ca69f93818b9566c77b14c0ee121ceee97dc0
