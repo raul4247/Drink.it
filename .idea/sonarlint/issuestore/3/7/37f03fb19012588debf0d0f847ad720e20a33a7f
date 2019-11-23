@@ -1,9 +1,9 @@
 
-ksquid:UselessImportCheck";Remove this unused import 'com.raulfm.drinkit.model.Drink'.(´¤øÿÿÿÿ8µç¼Ûè-
 esquid:UselessImportCheck
 "5Remove this unused import 'android.widget.ImageView'.(ú¯ëàüÿÿÿÿ8¥íñÛè-
+ksquid:UselessImportCheck";Remove this unused import 'com.raulfm.drinkit.model.Drink'.(´¤øÿÿÿÿ8µç¼Ûè-
 ]squid:S2259C"?A "NullPointerException" could be thrown; "d" is nullable here.(ı²Éø8ÔØÇÛè-
-dsquid:UselessImportCheck"9Remove this unused import 'com.squareup.picasso.Picasso'.(£œ¿×8Ä¤½Ûè-
-‡squid:UselessImportCheck"WRemove this unused import 'com.raulfm.drinkit.screens.drink_info.CircleTransformImage'.(­¶Õÿşÿÿÿÿ8Ä¤½Ûè-
 asquid:UselessImportCheck"6Remove this unused import 'android.widget.ScrollView'.(êÑ†é8šàØÛè-
+dsquid:UselessImportCheck"9Remove this unused import 'com.squareup.picasso.Picasso'.(£œ¿×8Ä¤½Ûè-
 bsquid:UselessImportCheck	"2Remove this unused import 'android.widget.Button'.(²òıÿÿÿÿ8¥íñÛè-
+‡squid:UselessImportCheck"WRemove this unused import 'com.raulfm.drinkit.screens.drink_info.CircleTransformImage'.(­¶Õÿşÿÿÿÿ8Ä¤½Ûè-
