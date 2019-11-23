@@ -58,3 +58,11 @@ H
 app/google-services.json,f\d\fd8d34b142d02ec743a8efefefd2c097961666e9
 o
 ?app/src/main/java/com/raulfm/drinkit/screens/LoginActivity.java,c\4\c4f7d684e26414ddee7a4d9cbd6840eb6d003fec
+=
+app/chave.jks,6\f\6fbf2117f211fee8bad152058c5968cf4a13d191
+c
+3app/src/main/java/com/raulfm/drinkit/util/Erro.java,9\d\9dafe3d1fa50dcbc418710403aab5b957ce0523e
+v
+Fapp/src/main/java/com/raulfm/drinkit/adapters/DrinksThumbsAdapter.java,c\e\ce828901182a3dc92e08273976f3e74c0456d16d
+t
+Dapp/src/main/java/com/raulfm/drinkit/adapters/DrinksListAdapter.java,4\9\49322b5db723661e42cc5bcd6dd6274ea229f4fd

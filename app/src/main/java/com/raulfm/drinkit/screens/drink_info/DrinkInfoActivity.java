@@ -23,7 +23,10 @@ import com.raulfm.drinkit.api_request.RetrofitAPI;
 import com.raulfm.drinkit.constants.ColorConstant;
 import com.raulfm.drinkit.model.Drink;
 import com.raulfm.drinkit.model.Drinks;
+import com.raulfm.drinkit.util.Erro;
 import com.squareup.picasso.Picasso;
+
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -44,22 +47,15 @@ public class DrinkInfoActivity extends AppCompatActivity {
     private ProgressBar apiLoadProgress;
     private ScrollView contentScrollView;
 
-    public void mostrarErro() {
-        Log.d("erro", "Não foi possível carregar o drink");
-        errorMsg.setVisibility(View.VISIBLE);
-        apiLoadProgress.setVisibility(View.GONE);
-    }
-
     public void carregaDrink() {
         RetrofitAPI retrofit = new RetrofitAPI();
         Call<Drinks> call = retrofit.retrofitController.getDrinkById(drinkId);
-
         call.enqueue(new Callback<Drinks>() {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onResponse(Call<Drinks> call, Response<Drinks> response) {
                 if (!response.isSuccessful())
-                    mostrarErro();
+                    Erro.drinkNotFound(getApplicationContext(), errorMsg, apiLoadProgress);
                 else {
                     Drinks drinks = response.body();
                     drink = drinks.primeiroDrink();
@@ -69,7 +65,8 @@ public class DrinkInfoActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Drinks> call, Throwable t) {
-                mostrarErro();
+                Erro.drinkNotFound(getApplicationContext(), errorMsg, apiLoadProgress);
+
             }
         });
     }
@@ -129,16 +126,18 @@ public class DrinkInfoActivity extends AppCompatActivity {
         window.setStatusBarColor(Color.parseColor(ColorConstant.PRIMARY_DARK_COLOR));
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drink_info);
         Intent intent = getIntent();
-        drinkId = Long.parseLong(intent.getStringExtra("drinkId"));
+        drinkId = Long.parseLong(Objects.requireNonNull(intent.getStringExtra("drinkId")));
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
             setStatusBarColor();
 
+        errorMsg = findViewById(R.id.errorMsgInfo);
         apiLoadProgress = findViewById(R.id.apiLoadProgress);
         contentScrollView = findViewById(R.id.contentScrollView);
         drinkThumb = findViewById(R.id.drinkThumb);

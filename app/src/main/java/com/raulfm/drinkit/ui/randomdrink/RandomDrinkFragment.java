@@ -2,14 +2,10 @@ package com.raulfm.drinkit.ui.randomdrink;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -19,12 +15,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.raulfm.drinkit.R;
-import com.raulfm.drinkit.adapters.RecyclerViewAdapter;
+import com.raulfm.drinkit.adapters.DrinksThumbsAdapter;
 import com.raulfm.drinkit.api_request.RetrofitAPI;
-import com.raulfm.drinkit.model.Drink;
 import com.raulfm.drinkit.model.Drinks;
-import com.raulfm.drinkit.screens.drink_info.CircleTransformImage;
-import com.squareup.picasso.Picasso;
+import com.raulfm.drinkit.util.Erro;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -35,18 +29,13 @@ public class RandomDrinkFragment extends Fragment {
     private ProgressBar randomApiLoadProgress;
     private TextView randomErrorMsg;
     private RecyclerView recyclerView;
-    private RecyclerViewAdapter adapter;
+    private DrinksThumbsAdapter adapter;
     private View root;
+    private TextView randomTitle;
 
     public void setContentVisible() {
         randomApiLoadProgress.setVisibility(View.GONE);
         recyclerView.setVisibility(View.VISIBLE);
-    }
-
-    public void mostrarErro() {
-        Log.d("erro", "Não foi possível carregar o drink");
-        randomErrorMsg.setVisibility(View.VISIBLE);
-        randomApiLoadProgress.setVisibility(View.GONE);
     }
 
     public void carregaAleatorios() {
@@ -58,20 +47,19 @@ public class RandomDrinkFragment extends Fragment {
                 @RequiresApi(api = Build.VERSION_CODES.KITKAT)
                 @Override
                 public void onResponse(Call<Drinks> call, Response<Drinks> response) {
-                    if (!response.isSuccessful()) {
-                        mostrarErro();
-                    } else {
+                    if (!response.isSuccessful())
+                        Erro.drinksNotLoaded(root.getContext(), randomErrorMsg, randomTitle, randomApiLoadProgress);
+                    else {
                         Drinks d = response.body();
                         if (d != null)
                             drinks.getDrinks().add(d.primeiroDrink());
-                        Log.d("asd", d.primeiroDrink().toString());
                         adapter.notifyDataSetChanged();
                     }
                 }
 
                 @Override
                 public void onFailure(Call<Drinks> call, Throwable t) {
-                    mostrarErro();
+                    Erro.drinksNotLoaded(root.getContext(), randomErrorMsg, randomTitle, randomApiLoadProgress);
                 }
             });
         }
@@ -80,7 +68,7 @@ public class RandomDrinkFragment extends Fragment {
 
     private void initRecyclerView() {
         recyclerView = root.findViewById(R.id.recyclerView);
-        adapter = new RecyclerViewAdapter(drinks, this.getContext());
+        adapter = new DrinksThumbsAdapter(drinks, this.getContext());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
     }
@@ -93,6 +81,7 @@ public class RandomDrinkFragment extends Fragment {
         randomApiLoadProgress = root.findViewById(R.id.RandomApiLoadProgress);
         randomErrorMsg = root.findViewById(R.id.RandomErrorMsg);
         recyclerView = root.findViewById(R.id.recyclerView);
+        randomTitle = root.findViewById(R.id.randomTitle);
 
         carregaAleatorios();
         setContentVisible();

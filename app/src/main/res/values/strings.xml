@@ -21,4 +21,7 @@
     <string name="sign_in_with_google">Sign in With Google</string>
     <string name="title">Drink.it</string>
     <string name="subtitle">Making the finest drinks</string>
+    <string name="search_button">Search</string>
+    <string name="drink_not_found_error_msg">Sorry, but we couldn\'t find the drink.</string>
+    <string name="drinks_not_loaded_error_msg">Sorry, but we couldn\'t load the drinks.</string>
 </resources>

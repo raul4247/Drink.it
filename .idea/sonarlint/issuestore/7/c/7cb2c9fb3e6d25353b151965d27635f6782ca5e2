@@ -1,2 +1,14 @@
 
-zsquid:S1488"\Immediately return this expression instead of assigning it to the temporary variable "root".(ö¬Ùñ8ÔÄå-
+Nsquid:S1481h"+Remove this unused "idList" local variable.(œ¡Öåûÿÿÿÿ8ÖªâËé-
+usquid:S3776a"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(î•Éğûÿÿÿÿ8­¦ÊËé-
+osquid:CommentedOutCodeLine„"<This block of commented-out lines of code should be removed.(šØÅæûÿÿÿÿ8©–¾Ëé-
+hsquid:HiddenFieldCheck{":Rename "drinks" which hides the field declared at line 41.(ôñ†¥üÿÿÿÿ8ã´ÇËé-
+|squid:UselessImportCheck"LRemove this unused import 'com.raulfm.drinkit.adapters.DrinksThumbsAdapter'.(âˆ®ˆüÿÿÿÿ8Ì›àËé-
+]squid:UselessImportCheck"-Remove this unused import 'android.util.Log'.(Ô¦Ø²øÿÿÿÿ8€»ÛÉé-
+squid:S13193"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(Î¡8ä½Éé-
+~squid:S1450-"[Remove the "recyclerView" field and declare it as a local variable in the relevant methods.(¿á© ıÿÿÿÿ8‰ìËËé-
+Msquid:S1068)"*Remove this unused "drinks" private field.( †í ÿÿÿÿÿ8‡¬±Íé-
+isquid:CommentedOutCodeLineR"<This block of commented-out lines of code should be removed.(ê¼êé8¬üÒËé-
+osquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ÖËÓüÿÿÿÿ8ÖªâËé-
+xsquid:S1450)"URemove the "drinks" field and declare it as a local variable in the relevant methods.( †í ÿÿÿÿÿ8‡¬±Íé-
+ysquid:S1450."VRemove the "adapter" field and declare it as a local variable in the relevant methods.(Ï›Ç´ùÿÿÿÿ8ß¸«Íé-
