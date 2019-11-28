@@ -32,6 +32,7 @@ public class RandomDrinkFragment extends Fragment {
     private DrinksThumbsAdapter adapter;
     private View root;
     private TextView randomTitle;
+    private String googleId;
 
     public void setContentVisible() {
         randomApiLoadProgress.setVisibility(View.GONE);
@@ -68,7 +69,7 @@ public class RandomDrinkFragment extends Fragment {
 
     private void initRecyclerView() {
         recyclerView = root.findViewById(R.id.recyclerView);
-        adapter = new DrinksThumbsAdapter(drinks, this.getContext());
+        adapter = new DrinksThumbsAdapter(drinks, googleId, this.getContext());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
     }
@@ -77,6 +78,9 @@ public class RandomDrinkFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.fragment_random_drink, container, false);
 
+        Bundle args = this.getArguments();
+        if(args != null)
+            googleId = args.getString("GOOGLE_ID");
         this.drinks = new Drinks();
         randomApiLoadProgress = root.findViewById(R.id.RandomApiLoadProgress);
         randomErrorMsg = root.findViewById(R.id.RandomErrorMsg);

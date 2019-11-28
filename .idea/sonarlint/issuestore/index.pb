@@ -30,8 +30,6 @@ X
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
 ?
 settings.gradle,0\5\05efc8b1657769a27696d478ded1e95f38737233
-@
-local.properties,0\7\0712df971a99ac4d2fccb8e0fb19f377f3374cca
 A
 gradle.properties,2\a\2afbb999f001938c88fa43fc2ef52abf0f8213e4
 |
@@ -52,12 +50,8 @@ q
 Aapp/src/main/java/com/raulfm/drinkit/constants/ColorConstant.java,9\3\930b4e71dca1206c0bcf4718383ec096717911b2
 ~
 Napp/src/main/java/com/raulfm/drinkit/screens/drink_info/DrinkInfoActivity.java,a\2\a2a2ee8475abd8584f71fee04110a0ceb1c09f9e
-v
-Fapp/src/main/java/com/raulfm/drinkit/adapters/RecyclerViewAdapter.java,1\4\149ca69f93818b9566c77b14c0ee121ceee97dc0
 H
 app/google-services.json,f\d\fd8d34b142d02ec743a8efefefd2c097961666e9
-o
-?app/src/main/java/com/raulfm/drinkit/screens/LoginActivity.java,c\4\c4f7d684e26414ddee7a4d9cbd6840eb6d003fec
 =
 app/chave.jks,6\f\6fbf2117f211fee8bad152058c5968cf4a13d191
 c
@@ -66,3 +60,7 @@ v
 Fapp/src/main/java/com/raulfm/drinkit/adapters/DrinksThumbsAdapter.java,c\e\ce828901182a3dc92e08273976f3e74c0456d16d
 t
 Dapp/src/main/java/com/raulfm/drinkit/adapters/DrinksListAdapter.java,4\9\49322b5db723661e42cc5bcd6dd6274ea229f4fd
+@
+local.properties,0\7\0712df971a99ac4d2fccb8e0fb19f377f3374cca
+u
+Eapp/src/main/java/com/raulfm/drinkit/screens/login/LoginActivity.java,f\1\f1291872e47eaf733e9eb46987fd4fcfdc89483a

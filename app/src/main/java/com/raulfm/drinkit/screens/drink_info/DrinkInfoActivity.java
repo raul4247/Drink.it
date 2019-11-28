@@ -8,7 +8,6 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -18,6 +17,11 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.raulfm.drinkit.R;
 import com.raulfm.drinkit.api_request.RetrofitAPI;
 import com.raulfm.drinkit.constants.ColorConstant;
@@ -33,10 +37,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DrinkInfoActivity extends AppCompatActivity {
-    private Long drinkId;
     private Drink drink;
-    private boolean favoritoState;
-    private FloatingActionButton fabFavorito;
+    private Long drinkId;
+    private Boolean favoriteState;
+    private FloatingActionButton fabFavorite;
     private ImageView drinkThumb;
     private TextView strDrinkName;
     private TextView strIngredients;
@@ -46,6 +50,8 @@ public class DrinkInfoActivity extends AppCompatActivity {
     private TextView strAlcoholic;
     private ProgressBar apiLoadProgress;
     private ScrollView contentScrollView;
+    private DatabaseReference userDatabaseReference = FirebaseDatabase.getInstance().getReference().child("Users");
+    private String googleId;
 
     public void carregaDrink() {
         RetrofitAPI retrofit = new RetrofitAPI();
@@ -90,7 +96,7 @@ public class DrinkInfoActivity extends AppCompatActivity {
         int size = drink.getAllIngredients().size();
         for (int i = 0; i < size - 1; i++)
             ingredientListBuilder.append("<font color='" + ColorConstant.PRIMARY_COLOR + "'> • </font><font color='" + ColorConstant.TEXT_COLOR + "'>" + drink.getAllIngredients().get(i) + ";</font><br/>");
-        ingredientListBuilder.append("<font color='" + ColorConstant.PRIMARY_COLOR + "'> • </font><font color='" + ColorConstant.TEXT_COLOR+ "'>" + drink.getAllIngredients().get(size - 1) + ";</font>");
+        ingredientListBuilder.append("<font color='" + ColorConstant.PRIMARY_COLOR + "'> • </font><font color='" + ColorConstant.TEXT_COLOR + "'>" + drink.getAllIngredients().get(size - 1) + ";</font>");
 
         String ingredientList = ingredientListBuilder.toString();
 
@@ -102,24 +108,58 @@ public class DrinkInfoActivity extends AppCompatActivity {
         setContentVisible();
     }
 
-    public void initFavorito(){
-        favoritoState = false;
-        if(favoritoState)
-            fabFavorito.setImageResource(R.drawable.ic_star);
+    private void setStar() {
+        if (favoriteState)
+            fabFavorite.setImageResource(R.drawable.ic_star);
         else
-            fabFavorito.setImageResource(R.drawable.ic_star_border);
+            fabFavorite.setImageResource(R.drawable.ic_star_border);
     }
 
-    public void toggleFavorito(){
-        favoritoState = !favoritoState;
-        if(favoritoState)
-            fabFavorito.setImageResource(R.drawable.ic_star);
-        else
-            fabFavorito.setImageResource(R.drawable.ic_star_border);
+    public void initFavorito() {
+        userDatabaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String path = googleId + "/favorites/" + drinkId;
+                favoriteState = dataSnapshot.hasChild(path);
+                setStar();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Erro.databaseError(getApplicationContext());
+            }
+        });
+    }
+
+    public void toggleFavorito() {
+        userDatabaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String path = googleId + "/favorites/" + drink.getidDrink();
+                favoriteState = !(dataSnapshot.hasChild(path));
+                setStar();
+                if (favoriteState){
+                    userDatabaseReference.child(googleId)
+                            .child("favorites")
+                            .child(drink.getidDrink()).child("name").setValue(drink.getstrDrink());
+
+                    userDatabaseReference.child(googleId)
+                            .child("favorites")
+                            .child(drink.getidDrink()).child("id").setValue(drink.getidDrink());
+                }
+                else
+                    userDatabaseReference.child(googleId).child("favorites").child(drink.getidDrink()).removeValue();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Erro.databaseError(getApplicationContext());
+            }
+        });
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public void setStatusBarColor(){
+    public void setStatusBarColor() {
         Window window = getWindow();
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -133,6 +173,7 @@ public class DrinkInfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_drink_info);
         Intent intent = getIntent();
         drinkId = Long.parseLong(Objects.requireNonNull(intent.getStringExtra("drinkId")));
+        googleId = Objects.requireNonNull(intent.getStringExtra("GOOGLE_ID"));
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
             setStatusBarColor();
@@ -147,9 +188,9 @@ public class DrinkInfoActivity extends AppCompatActivity {
         strGlass = findViewById(R.id.strGlass);
         strAlcoholic = findViewById(R.id.strAlcoholic);
 
-        fabFavorito = findViewById(R.id.fabFavorito);
+        fabFavorite = findViewById(R.id.fabFavorito);
         initFavorito();
-        fabFavorito.setOnClickListener(new View.OnClickListener() {
+        fabFavorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 toggleFavorito();

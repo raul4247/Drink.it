@@ -21,10 +21,12 @@ import com.squareup.picasso.Picasso;
 
 public class DrinksThumbsAdapter extends RecyclerView.Adapter<DrinksThumbsAdapter.ViewHolder>{
     private Drinks mDrinks;
+    private String googleId;
     private Context mContext;
 
-    public DrinksThumbsAdapter(Drinks mDrinks, Context mContext) {
+    public DrinksThumbsAdapter(Drinks mDrinks, String googleId, Context mContext) {
         this.mDrinks = mDrinks;
+        this.googleId = googleId;
         this.mContext = mContext;
     }
 
@@ -48,6 +50,7 @@ public class DrinksThumbsAdapter extends RecyclerView.Adapter<DrinksThumbsAdapte
             public void onClick(View v) {
                 Intent myIntent = new Intent(mContext, DrinkInfoActivity.class);
                 myIntent.putExtra("drinkId", mDrinks.getDrinks().get(position).getidDrink());
+                myIntent.putExtra("GOOGLE_ID", googleId);
                 mContext.startActivity(myIntent);
             }
         });

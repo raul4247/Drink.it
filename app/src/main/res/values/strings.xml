@@ -24,4 +24,7 @@
     <string name="search_button">Search</string>
     <string name="drink_not_found_error_msg">Sorry, but we couldn\'t find the drink.</string>
     <string name="drinks_not_loaded_error_msg">Sorry, but we couldn\'t load the drinks.</string>
+    <string name="database_error_msg">Error on database (Firebase)</string>
+    <string name="my_favorite_drinks">My favorite Drinks</string>
+    <string name="no_drinks">You haven\'t favorited a drink yet.</string>
 </resources>

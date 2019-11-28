@@ -1,4 +1,4 @@
-package com.raulfm.drinkit.screens;
+package com.raulfm.drinkit.screens.login;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,23 +27,19 @@ import com.raulfm.drinkit.constants.ColorConstant;
 
 public class LoginActivity extends AppCompatActivity {
     private GoogleSignInClient googleSignInClient;
-    private SignInButton googleSignInButton;
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_OK)
-            switch (requestCode) {
-                case 101:
-                    try {
-                        Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-                        GoogleSignInAccount account = task.getResult(ApiException.class);
-                        onLoggedIn(account);
-                    } catch (ApiException e) {
-                        // The ApiException status code indicates the detailed failure reason.
-                        Log.d("error", "signInResult:failed code=" + e.getStatusCode());
-                    }
-                    break;
+            if (requestCode == 101) {
+                try {
+                    Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+                    GoogleSignInAccount account = task.getResult(ApiException.class);
+                    onLoggedIn(account);
+                } catch (ApiException e) {
+                    Log.d("error", "signInResult:failed code=" + e.getStatusCode());
+                }
             }
     }
 
@@ -80,7 +76,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        googleSignInButton = findViewById(R.id.sign_in_button);
+        SignInButton googleSignInButton = findViewById(R.id.sign_in_button);
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()

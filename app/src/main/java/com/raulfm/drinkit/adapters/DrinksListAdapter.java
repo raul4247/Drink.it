@@ -17,10 +17,12 @@ import com.raulfm.drinkit.screens.drink_info.DrinkInfoActivity;
 
 public class DrinksListAdapter extends RecyclerView.Adapter<DrinksListAdapter.ViewHolder> {
     private Drinks mDrinks;
+    private String googleId;
     private Context mContext;
 
-    public DrinksListAdapter(Drinks mDrinks, Context mContext) {
+    public DrinksListAdapter(Drinks mDrinks, String googleId, Context mContext) {
         this.mDrinks = mDrinks;
+        this.googleId = googleId;
         this.mContext = mContext;
     }
 
@@ -39,6 +41,7 @@ public class DrinksListAdapter extends RecyclerView.Adapter<DrinksListAdapter.Vi
             public void onClick(View v) {
                 Intent myIntent = new Intent(mContext, DrinkInfoActivity.class);
                 myIntent.putExtra("drinkId", mDrinks.getDrinks().get(position).getidDrink());
+                myIntent.putExtra("GOOGLE_ID", googleId);
                 mContext.startActivity(myIntent);
             }
         });
