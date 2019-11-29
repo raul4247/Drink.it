@@ -6,8 +6,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import static com.raulfm.drinkit.api_request.ApiConstants.API_SERVER_URL;
 
 public class RetrofitAPI {
-    public Retrofit retrofit;
-    public RetrofitController retrofitController;
+    private final Retrofit retrofit;
+    public final RetrofitController retrofitController;
     public RetrofitAPI(){
         this.retrofit = new Retrofit.Builder()
                 .baseUrl(API_SERVER_URL)

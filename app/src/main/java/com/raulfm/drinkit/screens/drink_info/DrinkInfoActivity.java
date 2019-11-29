@@ -4,13 +4,10 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
@@ -51,7 +48,7 @@ public class DrinkInfoActivity extends AppCompatActivity {
     private TextView strAlcoholic;
     private ProgressBar apiLoadProgress;
     private ScrollView contentScrollView;
-    private DatabaseReference userDatabaseReference = FirebaseDatabase.getInstance().getReference().child("Users");
+    private final DatabaseReference userDatabaseReference = FirebaseDatabase.getInstance().getReference().child("Users");
     private String googleId;
     private String googleName;
 
@@ -66,7 +63,8 @@ public class DrinkInfoActivity extends AppCompatActivity {
                     Erro.drinkNotFound(getApplicationContext(), errorMsg, apiLoadProgress);
                 else {
                     Drinks drinks = response.body();
-                    drink = drinks.primeiroDrink();
+                    if (drinks != null)
+                        drink = drinks.primeiroDrink();
                     atualizaTela();
                 }
             }
@@ -97,8 +95,8 @@ public class DrinkInfoActivity extends AppCompatActivity {
 
         int size = drink.getAllIngredients().size();
         for (int i = 0; i < size - 1; i++)
-            ingredientListBuilder.append("<font color='" + ColorConstant.PRIMARY_COLOR + "'> • </font><font color='" + ColorConstant.TEXT_COLOR + "'>" + drink.getAllIngredients().get(i) + ";</font><br/>");
-        ingredientListBuilder.append("<font color='" + ColorConstant.PRIMARY_COLOR + "'> • </font><font color='" + ColorConstant.TEXT_COLOR + "'>" + drink.getAllIngredients().get(size - 1) + ";</font>");
+            ingredientListBuilder.append("<font color='" + ColorConstant.PRIMARY_COLOR + "'> • </font><font color='" + ColorConstant.TEXT_COLOR + "'>").append(drink.getAllIngredients().get(i)).append(";</font><br/>");
+        ingredientListBuilder.append("<font color='" + ColorConstant.PRIMARY_COLOR + "'> • </font><font color='" + ColorConstant.TEXT_COLOR + "'>").append(drink.getAllIngredients().get(size - 1)).append(";</font>");
 
         String ingredientList = ingredientListBuilder.toString();
 
@@ -189,12 +187,7 @@ public class DrinkInfoActivity extends AppCompatActivity {
 
         fabFavorite = findViewById(R.id.fabFavorito);
         initFavorito();
-        fabFavorite.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                toggleFavorito();
-            }
-        });
+        fabFavorite.setOnClickListener(view -> toggleFavorito());
 
         carregaDrink();
     }

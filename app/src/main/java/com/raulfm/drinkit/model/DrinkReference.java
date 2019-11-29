@@ -1,8 +1,8 @@
 package com.raulfm.drinkit.model;
 
-public class DrinkReference {
-    String name;
-    Long id;
+class DrinkReference {
+    private String name;
+    private Long id;
 
     public DrinkReference(String name, Long id) {
         this.name = name;

@@ -26,6 +26,7 @@ import com.raulfm.drinkit.util.Erro;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 
 
 public class FavoriteDrinkFragment extends Fragment {
@@ -33,10 +34,8 @@ public class FavoriteDrinkFragment extends Fragment {
     private ProgressBar FavoriteLoadProgress;
     private TextView FavoriteErrorMsg;
     private View root;
-    private DatabaseReference userDatabaseReference = FirebaseDatabase.getInstance().getReference().child("Users");
-    private DatabaseReference favoriteReference;
+    private final DatabaseReference userDatabaseReference = FirebaseDatabase.getInstance().getReference().child("Users");
     private RecyclerView recyclerView;
-    private DrinksListAdapter adapter;
     private String googleId;
     private String googleName;
 
@@ -46,14 +45,13 @@ public class FavoriteDrinkFragment extends Fragment {
     }
 
     private void carregaFavoritos() {
-        favoriteReference = userDatabaseReference.child(googleId).child("favorites");
+        DatabaseReference favoriteReference = userDatabaseReference.child(googleId).child("favorites");
         favoriteReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot singleSnapshot : dataSnapshot.getChildren()) {
                     List<DataSnapshot> snapshot = new ArrayList<>();
-                    for (Iterator<DataSnapshot> it = singleSnapshot.getChildren().iterator(); it.hasNext(); )
-                        snapshot.add(it.next());
+                    for (DataSnapshot value : singleSnapshot.getChildren()) snapshot.add(value);
 
                     String id = (String) snapshot.get(0).getValue();
                     String name = (String) snapshot.get(1).getValue();
@@ -63,19 +61,19 @@ public class FavoriteDrinkFragment extends Fragment {
                 if(drinks.getDrinks().size() > 0)
                     initRecyclerView();
                 else
-                    Erro.noDrinks(getContext(), FavoriteErrorMsg, FavoriteLoadProgress);
+                    Erro.noDrinks(Objects.requireNonNull(getContext()), FavoriteErrorMsg, FavoriteLoadProgress);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Erro.databaseError(getContext());
+                Erro.databaseError(Objects.requireNonNull(getContext()));
             }
         });
     }
 
     private void initRecyclerView() {
         recyclerView = root.findViewById(R.id.recyclerViewFavorites);
-        adapter = new DrinksListAdapter(drinks, googleId, googleName, this.getContext());
+        DrinksListAdapter adapter = new DrinksListAdapter(drinks, googleId, googleName, this.getContext());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
     }

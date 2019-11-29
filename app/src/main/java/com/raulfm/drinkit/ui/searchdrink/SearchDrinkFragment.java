@@ -35,7 +35,7 @@ public class SearchDrinkFragment extends Fragment {
     private String googleId;
     private String googleName;
 
-    public void buildList(Drinks drinks){
+    private void buildList(Drinks drinks){
         RecyclerView recyclerView = root.findViewById(R.id.recyclerViewSearch);
         DrinksListAdapter adapter = new DrinksListAdapter(drinks, googleId, googleName, this.getContext());
         recyclerView.setAdapter(adapter);
@@ -73,24 +73,23 @@ public class SearchDrinkFragment extends Fragment {
 
         initViews();
 
-        btnbuscar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                apiLoadProgress.setVisibility(View.VISIBLE);
+        btnbuscar.setOnClickListener(v -> {
+            apiLoadProgress.setVisibility(View.VISIBLE);
+            errorMsg.setVisibility(View.GONE);
+            String drinkSearchName = edtsearch.getText().toString();
+            if(isNameValid(drinkSearchName)){
+                RetrofitAPI retrofit = new RetrofitAPI();
+                Call<Drinks> call = retrofit.retrofitController.getDrinkByName(drinkSearchName);
 
-                String drinkSearchName = edtsearch.getText().toString();
-                if(isNameValid(drinkSearchName)){
-                    RetrofitAPI retrofit = new RetrofitAPI();
-                    Call<Drinks> call = retrofit.retrofitController.getDrinkByName(drinkSearchName);
-
-                    call.enqueue(new Callback<Drinks>() {
-                        @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-                        @Override
-                        public void onResponse(Call<Drinks> call, Response<Drinks> response) {
-                            if (!response.isSuccessful())
-                                Erro.drinkNotFound(root.getContext(), errorMsg, apiLoadProgress);
-                            else {
-                                Drinks drinks = response.body();
+                call.enqueue(new Callback<Drinks>() {
+                    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+                    @Override
+                    public void onResponse(Call<Drinks> call, Response<Drinks> response) {
+                        if (!response.isSuccessful())
+                            Erro.drinkNotFound(root.getContext(), errorMsg, apiLoadProgress);
+                        else {
+                            Drinks drinks = response.body();
+                            if (drinks != null) {
                                 if (drinks.getDrinks() == null)
                                     Erro.drinkNotFound(root.getContext(), errorMsg, apiLoadProgress);
                                 else{
@@ -101,12 +100,12 @@ public class SearchDrinkFragment extends Fragment {
                                 }
                             }
                         }
-                        @Override
-                        public void onFailure(Call<Drinks> call, Throwable t) {
-                            Erro.drinkNotFound(root.getContext(), errorMsg, apiLoadProgress);
-                        }
-                    });
-                }
+                    }
+                    @Override
+                    public void onFailure(Call<Drinks> call, Throwable t) {
+                        Erro.drinkNotFound(root.getContext(), errorMsg, apiLoadProgress);
+                    }
+                });
             }
         });
         return root;

@@ -66,3 +66,7 @@ h
 8app/src/main/java/com/raulfm/drinkit/util/StatusBar.java,1\f\1f7bdc9c3967d5e559497e766f661e377948bf5f
 p
 @app/src/main/java/com/raulfm/drinkit/ui/about/AboutFragment.java,5\b\5b560174a913d60ec50e645e2e6be90e549c7306
+n
+>app/src/main/java/com/raulfm/drinkit/model/DrinkReference.java,8\5\85e0a547ae984af7ab4a99f6d644e2d13be45a2b
+@
+local.properties,0\7\0712df971a99ac4d2fccb8e0fb19f377f3374cca

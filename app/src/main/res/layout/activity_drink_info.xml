@@ -25,7 +25,8 @@
         android:text="@string/drinks_not_loaded_error_msg"
         android:textColor="@color/textColor"
         android:textSize="22sp"
-        android:visibility="gone" />
+        android:visibility="gone"
+        tools:targetApi="jelly_bean" />
 
     <ScrollView
         android:id="@+id/contentScrollView"
@@ -70,14 +71,16 @@
                 android:layout_marginTop="32dp"
                 android:fontFamily="@font/playfair_display_italic"
                 android:textColor="@color/textColor"
-                android:textSize="26sp" />
+                android:textSize="26sp"
+                tools:targetApi="jelly_bean" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginTop="12dp"
                 android:fontFamily="@font/raleway_regular"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                tools:targetApi="jelly_bean">
 
                 <TextView
                     android:id="@+id/copoLabel"
@@ -89,7 +92,8 @@
                     android:paddingRight="4dp"
                     android:text="@string/copo_label"
                     android:textColor="@color/textColor"
-                    android:textSize="22sp" />
+                    android:textSize="22sp"
+                    tools:targetApi="jelly_bean" />
 
                 <TextView
                     android:id="@+id/strGlass"
@@ -97,7 +101,8 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/raleway_light"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    tools:targetApi="jelly_bean" />
             </LinearLayout>
 
             <LinearLayout
@@ -105,7 +110,8 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="12dp"
                 android:fontFamily="@font/raleway_regular"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                tools:targetApi="jelly_bean">
 
                 <TextView
                     android:id="@+id/categoriaLabel"
@@ -118,7 +124,8 @@
                     android:paddingRight="4dp"
                     android:text="@string/categoria_label"
                     android:textColor="@color/textColor"
-                    android:textSize="22sp" />
+                    android:textSize="22sp"
+                    tools:targetApi="jelly_bean" />
 
                 <TextView
                     android:id="@+id/strAlcoholic"
@@ -126,7 +133,8 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/raleway_light"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    tools:targetApi="jelly_bean" />
             </LinearLayout>
 
             <TextView
@@ -139,7 +147,8 @@
                 android:fontFamily="@font/raleway_regular"
                 android:text="@string/ingredientes_label"
                 android:textColor="@color/textColor"
-                android:textSize="22sp" />
+                android:textSize="22sp"
+                tools:targetApi="jelly_bean" />
 
             <TextView
                 android:id="@+id/strIngredients"
@@ -149,7 +158,8 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="16dp"
                 android:fontFamily="@font/raleway_light"
-                android:textColor="@color/textColor" />
+                android:textColor="@color/textColor"
+                tools:targetApi="jelly_bean" />
 
             <TextView
                 android:id="@+id/receitaLabel"
@@ -161,7 +171,8 @@
                 android:fontFamily="@font/raleway_regular"
                 android:text="@string/receita_label"
                 android:textColor="@color/textColor"
-                android:textSize="22sp" />
+                android:textSize="22sp"
+                tools:targetApi="jelly_bean" />
 
             <TextView
                 android:id="@+id/strInstructions"
@@ -172,7 +183,8 @@
                 android:layout_marginRight="16dp"
                 android:layout_marginBottom="20dp"
                 android:fontFamily="@font/raleway_light"
-                android:textColor="@color/textColor" />
+                android:textColor="@color/textColor"
+                tools:targetApi="jelly_bean" />
 
 
         </LinearLayout>

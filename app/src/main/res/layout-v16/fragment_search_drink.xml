@@ -32,7 +32,7 @@
             android:fontFamily="@font/raleway_regular"
             android:text="@string/search_button"
             android:textColor="@color/textColor"
-            tools:targetApi="lollipop" />
+            tools:targetApi="jelly_bean" />
 
         <TextView
             android:id="@+id/errorMsg"
@@ -45,8 +45,7 @@
             android:text="@string/drink_not_found_error_msg"
             android:textColor="@color/textColor"
             android:textSize="22sp"
-            android:visibility="gone"
-            tools:targetApi="jelly_bean" />
+            android:visibility="gone" />
 
         <ProgressBar
             android:id="@+id/apiLoadProgress"

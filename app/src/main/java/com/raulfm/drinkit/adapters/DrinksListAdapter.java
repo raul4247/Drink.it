@@ -16,10 +16,10 @@ import com.raulfm.drinkit.model.Drinks;
 import com.raulfm.drinkit.screens.drink_info.DrinkInfoActivity;
 
 public class DrinksListAdapter extends RecyclerView.Adapter<DrinksListAdapter.ViewHolder> {
-    private Drinks mDrinks;
-    private String googleId;
-    private String googleName;
-    private Context mContext;
+    private final Drinks mDrinks;
+    private final String googleId;
+    private final String googleName;
+    private final Context mContext;
 
     public DrinksListAdapter(Drinks mDrinks, String googleId, String googleName, Context mContext) {
         this.mDrinks = mDrinks;
@@ -53,10 +53,10 @@ public class DrinksListAdapter extends RecyclerView.Adapter<DrinksListAdapter.Vi
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView name;
-        LinearLayout parentLayout;
+        final TextView name;
+        final LinearLayout parentLayout;
 
-        public ViewHolder(@NonNull View itemView) {
+        ViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.name);
             parentLayout = itemView.findViewById(R.id.parentLayout);

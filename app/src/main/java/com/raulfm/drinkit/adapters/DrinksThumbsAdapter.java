@@ -20,10 +20,10 @@ import com.raulfm.drinkit.screens.drink_info.DrinkInfoActivity;
 import com.squareup.picasso.Picasso;
 
 public class DrinksThumbsAdapter extends RecyclerView.Adapter<DrinksThumbsAdapter.ViewHolder>{
-    private Drinks mDrinks;
-    private String googleId;
-    private String googleName;
-    private Context mContext;
+    private final Drinks mDrinks;
+    private final String googleId;
+    private final String googleName;
+    private final Context mContext;
 
     public DrinksThumbsAdapter(Drinks mDrinks, String googleId, String googleName, Context mContext) {
         this.mDrinks = mDrinks;
@@ -47,15 +47,12 @@ public class DrinksThumbsAdapter extends RecyclerView.Adapter<DrinksThumbsAdapte
                 .transform(new CircleTransformImage())
                 .into(holder.img);
         holder.name.setText(mDrinks.getDrinks().get(position).getstrDrink());
-        holder.recipeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent myIntent = new Intent(mContext, DrinkInfoActivity.class);
-                myIntent.putExtra("drinkId", mDrinks.getDrinks().get(position).getidDrink());
-                myIntent.putExtra("GOOGLE_ID", googleId);
-                myIntent.putExtra("GOOGLE_NAME", googleName);
-                mContext.startActivity(myIntent);
-            }
+        holder.recipeButton.setOnClickListener(v -> {
+            Intent myIntent = new Intent(mContext, DrinkInfoActivity.class);
+            myIntent.putExtra("drinkId", mDrinks.getDrinks().get(position).getidDrink());
+            myIntent.putExtra("GOOGLE_ID", googleId);
+            myIntent.putExtra("GOOGLE_NAME", googleName);
+            mContext.startActivity(myIntent);
         });
     }
 
@@ -65,11 +62,11 @@ public class DrinksThumbsAdapter extends RecyclerView.Adapter<DrinksThumbsAdapte
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView img;
-        TextView name;
-        Button recipeButton;
-        LinearLayout parentLayout;
-        public ViewHolder(@NonNull View itemView) {
+        final ImageView img;
+        final TextView name;
+        final Button recipeButton;
+        final LinearLayout parentLayout;
+        ViewHolder(@NonNull View itemView) {
             super(itemView);
             img = itemView.findViewById(R.id.img);
             name = itemView.findViewById(R.id.name);

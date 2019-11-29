@@ -16,12 +16,13 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.raulfm.drinkit.R;
 import com.raulfm.drinkit.screens.login.LoginActivity;
 
+import java.util.Objects;
+
 public class AboutFragment extends Fragment {
-    private View root;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        root = inflater.inflate(R.layout.fragment_about, container, false);
+        View root = inflater.inflate(R.layout.fragment_about, container, false);
 
         Button btSignOut = root.findViewById(R.id.bt_sign_out);
 
@@ -29,7 +30,7 @@ public class AboutFragment extends Fragment {
                 .requestEmail()
                 .build();
 
-        GoogleSignInClient googleSignInClient = GoogleSignIn.getClient(getContext(), gso);
+        GoogleSignInClient googleSignInClient = GoogleSignIn.getClient(Objects.requireNonNull(getContext()), gso);
 
         btSignOut.setOnClickListener(v -> googleSignInClient.signOut().addOnCompleteListener(task -> {
             Intent intent = new Intent(getContext(), LoginActivity.class);

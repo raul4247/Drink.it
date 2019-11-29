@@ -107,13 +107,10 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
-    public void selectDrawerItem(MenuItem menuItem) {
+    private void selectDrawerItem(MenuItem menuItem) {
         Fragment fragment = null;
         Class fragmentClass;
         switch (menuItem.getItemId()) {
-            case R.id.nav_random:
-                fragmentClass = RandomDrinkFragment.class;
-                break;
             case R.id.nav_favorite:
                 fragmentClass = FavoriteDrinkFragment.class;
                 break;
@@ -123,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.nav_about:
                 fragmentClass = AboutFragment.class;
                 break;
+            case R.id.nav_random:
             default:
                 fragmentClass = RandomDrinkFragment.class;
         }

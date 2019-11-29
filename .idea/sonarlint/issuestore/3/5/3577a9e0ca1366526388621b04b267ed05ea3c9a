@@ -1,6 +1,5 @@
 
-~squid:S00116!"_Rename this field "FavoriteLoadProgress" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Š‚á°8õîãùê-
-\squid:S1155>">Use isEmpty() to check whether the collection is empty or not.(ä¾ØÔ8´¥Èë-
-~squid:S1450%"`Remove the "favoriteReference" field and declare it as a local variable in the relevant methods.(˜ú‰¤8´¥Èë-
-ysquid:S1450'"VRemove the "adapter" field and declare it as a local variable in the relevant methods.(Ï›Ç´ùÿÿÿÿ8½Íñùê-
-squid:S00116""[Rename this field "FavoriteErrorMsg" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ëĞêÌşÿÿÿÿ8õîãùê-
+\squid:S1155=">Use isEmpty() to check whether the collection is empty or not.(ä¾ØÔ8´¥Èë-
+~squid:S00116""_Rename this field "FavoriteLoadProgress" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Š‚á°8õîãùê-
+Zsquid:UselessImportCheck"/Remove this unused import 'java.util.Iterator'.(¥ÍòÕ8úãËë-
+squid:S00116#"[Rename this field "FavoriteErrorMsg" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ëĞêÌşÿÿÿÿ8õîãùê-

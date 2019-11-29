@@ -39,12 +39,12 @@ public class RandomDrinkFragment extends Fragment {
     private String googleId;
     private String googleName;
 
-    public void setContentVisible() {
+    private void setContentVisible() {
         randomApiLoadProgress.setVisibility(View.GONE);
         recyclerView.setVisibility(View.VISIBLE);
     }
 
-    public void carregaAleatorios() {
+    private void carregaAleatorios() {
         RetrofitAPI retrofit = new RetrofitAPI();
         Call<Drinks> call;
         for (int i = 0; i < 5; i++) {
