@@ -1,6 +1,5 @@
 package com.raulfm.drinkit.ui.favoritedrink;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +8,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,9 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.raulfm.drinkit.R;
 import com.raulfm.drinkit.adapters.DrinksListAdapter;
-import com.raulfm.drinkit.api_request.RetrofitAPI;
 import com.raulfm.drinkit.model.Drink;
-import com.raulfm.drinkit.model.DrinkReference;
 import com.raulfm.drinkit.model.Drinks;
 import com.raulfm.drinkit.util.Erro;
 
@@ -43,12 +39,12 @@ public class FavoriteDrinkFragment extends Fragment {
     private DrinksListAdapter adapter;
     private String googleId;
 
-    public void setContentVisible() {
+    private void setContentVisible() {
         FavoriteLoadProgress.setVisibility(View.GONE);
         recyclerView.setVisibility(View.VISIBLE);
     }
 
-    public void carregaFavoritos() {
+    private void carregaFavoritos() {
         favoriteReference = userDatabaseReference.child(googleId).child("favorites");
         favoriteReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -92,6 +88,7 @@ public class FavoriteDrinkFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        drinks.getDrinks().clear();
         carregaFavoritos();
         setContentVisible();
     }

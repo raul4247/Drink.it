@@ -52,12 +52,6 @@
             android:layout_marginTop="24dp"
             android:visibility="visible" />
 
-        <!--
-        <ListView
-            android:id="@+id/lv_select"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-        -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewSearch"
             android:layout_width="match_parent"

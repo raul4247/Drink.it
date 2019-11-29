@@ -1,17 +1,13 @@
 package com.raulfm.drinkit.screens.login;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -23,7 +19,6 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 import com.raulfm.drinkit.MainActivity;
 import com.raulfm.drinkit.R;
-import com.raulfm.drinkit.constants.ColorConstant;
 import com.raulfm.drinkit.util.StatusBar;
 
 public class LoginActivity extends AppCompatActivity {

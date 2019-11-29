@@ -17,6 +17,7 @@ import androidx.navigation.ui.NavigationUI;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.material.navigation.NavigationView;
 import com.raulfm.drinkit.screens.drink_info.CircleTransformImage;
+import com.raulfm.drinkit.ui.about.AboutFragment;
 import com.raulfm.drinkit.ui.favoritedrink.FavoriteDrinkFragment;
 import com.raulfm.drinkit.ui.randomdrink.RandomDrinkFragment;
 import com.raulfm.drinkit.ui.searchdrink.SearchDrinkFragment;
@@ -116,6 +117,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.nav_search:
                 fragmentClass = SearchDrinkFragment.class;
+                break;
+            case R.id.nav_about:
+                fragmentClass = AboutFragment.class;
                 break;
             default:
                 fragmentClass = RandomDrinkFragment.class;
