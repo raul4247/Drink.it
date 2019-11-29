@@ -33,10 +33,11 @@ public class SearchDrinkFragment extends Fragment {
     private TextView errorMsg;
     private ProgressBar apiLoadProgress;
     private String googleId;
+    private String googleName;
 
     public void buildList(Drinks drinks){
         RecyclerView recyclerView = root.findViewById(R.id.recyclerViewSearch);
-        DrinksListAdapter adapter = new DrinksListAdapter(drinks, googleId, this.getContext());
+        DrinksListAdapter adapter = new DrinksListAdapter(drinks, googleId, googleName, this.getContext());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         apiLoadProgress.setVisibility(View.GONE);
@@ -65,8 +66,10 @@ public class SearchDrinkFragment extends Fragment {
         root = inflater.inflate(R.layout.fragment_search_drink, container, false);
 
         Bundle args = this.getArguments();
-        if(args != null)
+        if(args != null){
             googleId = args.getString("GOOGLE_ID");
+            googleName = args.getString("GOOGLE_NAME");
+        }
 
         initViews();
 

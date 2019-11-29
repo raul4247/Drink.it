@@ -53,6 +53,7 @@ public class DrinkInfoActivity extends AppCompatActivity {
     private ScrollView contentScrollView;
     private DatabaseReference userDatabaseReference = FirebaseDatabase.getInstance().getReference().child("Users");
     private String googleId;
+    private String googleName;
 
     private void carregaDrink() {
         RetrofitAPI retrofit = new RetrofitAPI();
@@ -141,6 +142,10 @@ public class DrinkInfoActivity extends AppCompatActivity {
                 setStar();
                 if (favoriteState){
                     userDatabaseReference.child(googleId)
+                            .child("name")
+                            .setValue(googleName);
+
+                    userDatabaseReference.child(googleId)
                             .child("favorites")
                             .child(drink.getidDrink()).child("name").setValue(drink.getstrDrink());
 
@@ -167,6 +172,7 @@ public class DrinkInfoActivity extends AppCompatActivity {
         Intent intent = getIntent();
         drinkId = Long.parseLong(Objects.requireNonNull(intent.getStringExtra("drinkId")));
         googleId = Objects.requireNonNull(intent.getStringExtra("GOOGLE_ID"));
+        googleName = Objects.requireNonNull(intent.getStringExtra("GOOGLE_NAME"));
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
             StatusBar.SetColor(getWindow());

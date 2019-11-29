@@ -1,6 +1,5 @@
 package com.raulfm.drinkit.ui.randomdrink;
 
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -38,6 +37,7 @@ public class RandomDrinkFragment extends Fragment {
     private SwipeRefreshLayout swipeRefreshLayout;
     private TextView randomTitle;
     private String googleId;
+    private String googleName;
 
     public void setContentVisible() {
         randomApiLoadProgress.setVisibility(View.GONE);
@@ -74,7 +74,7 @@ public class RandomDrinkFragment extends Fragment {
 
     private void initRecyclerView() {
         recyclerView = root.findViewById(R.id.recyclerView);
-        adapter = new DrinksThumbsAdapter(drinks, googleId, this.getContext());
+        adapter = new DrinksThumbsAdapter(drinks, googleId, googleName, this.getContext());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
     }
@@ -84,8 +84,11 @@ public class RandomDrinkFragment extends Fragment {
         root = inflater.inflate(R.layout.fragment_random_drink, container, false);
 
         Bundle args = this.getArguments();
-        if(args != null)
+        if(args != null){
             googleId = args.getString("GOOGLE_ID");
+            googleName = args.getString("GOOGLE_NAME");
+        }
+
         this.drinks = new Drinks();
         randomApiLoadProgress = root.findViewById(R.id.RandomApiLoadProgress);
         randomErrorMsg = root.findViewById(R.id.RandomErrorMsg);
@@ -93,24 +96,18 @@ public class RandomDrinkFragment extends Fragment {
         randomTitle = root.findViewById(R.id.randomTitle);
         swipeRefreshLayout = root.findViewById(R.id.swipe_cotainer);
         FloatingActionButton fab = root.findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                drinks.getDrinks().clear();
-                carregaAleatorios();
-            }
+        fab.setOnClickListener(view -> {
+            drinks.getDrinks().clear();
+            carregaAleatorios();
         });
         carregaAleatorios();
         setContentVisible();
         swipeRefreshLayout.setOnRefreshListener(
-                new SwipeRefreshLayout.OnRefreshListener() {
-                    @Override
-                    public void onRefresh() {
-                        Log.i("Swipe", "onRefresh called from SwipeRefreshLayout");
-                        drinks.getDrinks().clear();
-                        carregaAleatorios();
-                        swipeRefreshLayout.setRefreshing(false);
-                    }
+                () -> {
+                    Log.i("Swipe", "onRefresh called from SwipeRefreshLayout");
+                    drinks.getDrinks().clear();
+                    carregaAleatorios();
+                    swipeRefreshLayout.setRefreshing(false);
                 }
         );
         swipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.colorPrimaryDark));

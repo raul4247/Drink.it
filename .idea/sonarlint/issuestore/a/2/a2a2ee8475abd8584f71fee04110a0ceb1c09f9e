@@ -1,0 +1,7 @@
+
+`squid:UselessImportCheck"0Remove this unused import 'android.view.Window'.(¿è™÷úÿÿÿÿ8°áœÈë-
+csquid:UselessImportCheck"3Remove this unused import 'android.graphics.Color'.(øãíòşÿÿÿÿ8°áœÈë-
+hsquid:S1192"JDefine a constant instead of duplicating this literal "favorites" 3 times.(ìÇÜo8™û•Èë-
+bsquid:UselessImportCheck"7Remove this unused import 'android.view.WindowManager'.(Ü³‹Å8°áœÈë-
+Msquid:S5411q"*Use the primitive boolean expression here.(¿˜¸øÿÿÿÿ8™û•Èë-
+Nsquid:S5411"*Use the primitive boolean expression here.(„íšıÿÿÿÿ8™û•Èë-

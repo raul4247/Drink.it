@@ -38,6 +38,7 @@ public class FavoriteDrinkFragment extends Fragment {
     private RecyclerView recyclerView;
     private DrinksListAdapter adapter;
     private String googleId;
+    private String googleName;
 
     private void setContentVisible() {
         FavoriteLoadProgress.setVisibility(View.GONE);
@@ -74,7 +75,7 @@ public class FavoriteDrinkFragment extends Fragment {
 
     private void initRecyclerView() {
         recyclerView = root.findViewById(R.id.recyclerViewFavorites);
-        adapter = new DrinksListAdapter(drinks, googleId, this.getContext());
+        adapter = new DrinksListAdapter(drinks, googleId, googleName, this.getContext());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
     }
@@ -98,8 +99,10 @@ public class FavoriteDrinkFragment extends Fragment {
         root = inflater.inflate(R.layout.fragment_favorite_drink, container, false);
 
         Bundle args = this.getArguments();
-        if (args != null)
+        if (args != null){
             googleId = args.getString("GOOGLE_ID");
+            googleName = args.getString("GOOGLE_NAME");
+        }
 
         this.drinks = new Drinks();
 

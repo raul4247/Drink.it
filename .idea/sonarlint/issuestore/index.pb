@@ -62,3 +62,7 @@ t
 Dapp/src/main/java/com/raulfm/drinkit/adapters/DrinksListAdapter.java,4\9\49322b5db723661e42cc5bcd6dd6274ea229f4fd
 u
 Eapp/src/main/java/com/raulfm/drinkit/screens/login/LoginActivity.java,f\1\f1291872e47eaf733e9eb46987fd4fcfdc89483a
+h
+8app/src/main/java/com/raulfm/drinkit/util/StatusBar.java,1\f\1f7bdc9c3967d5e559497e766f661e377948bf5f
+p
+@app/src/main/java/com/raulfm/drinkit/ui/about/AboutFragment.java,5\b\5b560174a913d60ec50e645e2e6be90e549c7306

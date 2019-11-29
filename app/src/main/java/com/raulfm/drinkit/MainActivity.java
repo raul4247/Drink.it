@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
         args = new Bundle();
         args.putString("GOOGLE_ID", googleSignInAccount.getId());
+        args.putString("GOOGLE_NAME", googleSignInAccount.getDisplayName());
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_random, R.id.nav_favorite, R.id.nav_search)
@@ -81,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 });
         setDefaultFragment();
+        toolbar.setTitle("Drink It");
     }
 
     private void setDefaultFragment(){

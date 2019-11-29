@@ -18,11 +18,13 @@ import com.raulfm.drinkit.screens.drink_info.DrinkInfoActivity;
 public class DrinksListAdapter extends RecyclerView.Adapter<DrinksListAdapter.ViewHolder> {
     private Drinks mDrinks;
     private String googleId;
+    private String googleName;
     private Context mContext;
 
-    public DrinksListAdapter(Drinks mDrinks, String googleId, Context mContext) {
+    public DrinksListAdapter(Drinks mDrinks, String googleId, String googleName, Context mContext) {
         this.mDrinks = mDrinks;
         this.googleId = googleId;
+        this.googleName = googleName;
         this.mContext = mContext;
     }
 
@@ -36,14 +38,12 @@ public class DrinksListAdapter extends RecyclerView.Adapter<DrinksListAdapter.Vi
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         holder.name.setText(mDrinks.getDrinks().get(position).getstrDrink());
-        holder.name.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent myIntent = new Intent(mContext, DrinkInfoActivity.class);
-                myIntent.putExtra("drinkId", mDrinks.getDrinks().get(position).getidDrink());
-                myIntent.putExtra("GOOGLE_ID", googleId);
-                mContext.startActivity(myIntent);
-            }
+        holder.name.setOnClickListener(v -> {
+            Intent myIntent = new Intent(mContext, DrinkInfoActivity.class);
+            myIntent.putExtra("drinkId", mDrinks.getDrinks().get(position).getidDrink());
+            myIntent.putExtra("GOOGLE_ID", googleId);
+            myIntent.putExtra("GOOGLE_NAME", googleName);
+            mContext.startActivity(myIntent);
         });
     }
 
