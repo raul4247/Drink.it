@@ -1,7 +1,9 @@
 package com.raulfm.drinkit.ui.randomdrink;
 
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +15,9 @@ import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.raulfm.drinkit.R;
 import com.raulfm.drinkit.adapters.DrinksThumbsAdapter;
 import com.raulfm.drinkit.api_request.RetrofitAPI;
@@ -31,6 +35,7 @@ public class RandomDrinkFragment extends Fragment {
     private RecyclerView recyclerView;
     private DrinksThumbsAdapter adapter;
     private View root;
+    private SwipeRefreshLayout swipeRefreshLayout;
     private TextView randomTitle;
     private String googleId;
 
@@ -86,9 +91,29 @@ public class RandomDrinkFragment extends Fragment {
         randomErrorMsg = root.findViewById(R.id.RandomErrorMsg);
         recyclerView = root.findViewById(R.id.recyclerView);
         randomTitle = root.findViewById(R.id.randomTitle);
-
+        swipeRefreshLayout = root.findViewById(R.id.swipe_cotainer);
+        FloatingActionButton fab = root.findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                drinks.getDrinks().clear();
+                carregaAleatorios();
+            }
+        });
         carregaAleatorios();
         setContentVisible();
+        swipeRefreshLayout.setOnRefreshListener(
+                new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+                        Log.i("Swipe", "onRefresh called from SwipeRefreshLayout");
+                        drinks.getDrinks().clear();
+                        carregaAleatorios();
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+                }
+        );
+        swipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.colorPrimaryDark));
         return root;
     }
 }
