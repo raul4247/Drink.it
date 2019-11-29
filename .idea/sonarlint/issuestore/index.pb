@@ -60,7 +60,5 @@ v
 Fapp/src/main/java/com/raulfm/drinkit/adapters/DrinksThumbsAdapter.java,c\e\ce828901182a3dc92e08273976f3e74c0456d16d
 t
 Dapp/src/main/java/com/raulfm/drinkit/adapters/DrinksListAdapter.java,4\9\49322b5db723661e42cc5bcd6dd6274ea229f4fd
-@
-local.properties,0\7\0712df971a99ac4d2fccb8e0fb19f377f3374cca
 u
 Eapp/src/main/java/com/raulfm/drinkit/screens/login/LoginActivity.java,f\1\f1291872e47eaf733e9eb46987fd4fcfdc89483a

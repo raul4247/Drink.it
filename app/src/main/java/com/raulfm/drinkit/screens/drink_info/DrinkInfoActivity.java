@@ -28,6 +28,7 @@ import com.raulfm.drinkit.constants.ColorConstant;
 import com.raulfm.drinkit.model.Drink;
 import com.raulfm.drinkit.model.Drinks;
 import com.raulfm.drinkit.util.Erro;
+import com.raulfm.drinkit.util.StatusBar;
 import com.squareup.picasso.Picasso;
 
 import java.util.Objects;
@@ -53,7 +54,7 @@ public class DrinkInfoActivity extends AppCompatActivity {
     private DatabaseReference userDatabaseReference = FirebaseDatabase.getInstance().getReference().child("Users");
     private String googleId;
 
-    public void carregaDrink() {
+    private void carregaDrink() {
         RetrofitAPI retrofit = new RetrofitAPI();
         Call<Drinks> call = retrofit.retrofitController.getDrinkById(drinkId);
         call.enqueue(new Callback<Drinks>() {
@@ -77,13 +78,13 @@ public class DrinkInfoActivity extends AppCompatActivity {
         });
     }
 
-    public void setContentVisible() {
+    private void setContentVisible() {
         apiLoadProgress.setVisibility(View.GONE);
         contentScrollView.setVisibility(View.VISIBLE);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public void atualizaTela() {
+    private void atualizaTela() {
         Picasso.get()
                 .load(drink.getstrDrinkThumb())
                 .transform(new CircleTransformImage())
@@ -115,7 +116,7 @@ public class DrinkInfoActivity extends AppCompatActivity {
             fabFavorite.setImageResource(R.drawable.ic_star_border);
     }
 
-    public void initFavorito() {
+    private void initFavorito() {
         userDatabaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -131,7 +132,7 @@ public class DrinkInfoActivity extends AppCompatActivity {
         });
     }
 
-    public void toggleFavorito() {
+    private void toggleFavorito() {
         userDatabaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -158,14 +159,6 @@ public class DrinkInfoActivity extends AppCompatActivity {
         });
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public void setStatusBarColor() {
-        Window window = getWindow();
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.setStatusBarColor(Color.parseColor(ColorConstant.PRIMARY_DARK_COLOR));
-    }
-
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -176,7 +169,7 @@ public class DrinkInfoActivity extends AppCompatActivity {
         googleId = Objects.requireNonNull(intent.getStringExtra("GOOGLE_ID"));
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-            setStatusBarColor();
+            StatusBar.SetColor(getWindow());
 
         errorMsg = findViewById(R.id.errorMsgInfo);
         apiLoadProgress = findViewById(R.id.apiLoadProgress);

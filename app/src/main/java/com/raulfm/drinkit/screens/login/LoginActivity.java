@@ -24,6 +24,7 @@ import com.google.android.gms.tasks.Task;
 import com.raulfm.drinkit.MainActivity;
 import com.raulfm.drinkit.R;
 import com.raulfm.drinkit.constants.ColorConstant;
+import com.raulfm.drinkit.util.StatusBar;
 
 public class LoginActivity extends AppCompatActivity {
     private GoogleSignInClient googleSignInClient;
@@ -63,19 +64,14 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public void setStatusBarColor() {
-        Window window = getWindow();
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.setStatusBarColor(Color.parseColor(ColorConstant.PRIMARY_DARK_COLOR));
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+            StatusBar.SetColor(getWindow());
+
         SignInButton googleSignInButton = findViewById(R.id.sign_in_button);
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -91,7 +87,6 @@ public class LoginActivity extends AppCompatActivity {
                 startActivityForResult(signInIntent, 101);
             }
         });
-        setStatusBarColor();
     }
 
 }
